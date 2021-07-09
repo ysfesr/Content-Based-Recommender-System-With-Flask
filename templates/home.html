@@ -1,0 +1,32 @@
+{% extends 'base.html' %}
+
+{% block content %}
+<div class='container'>
+<form action="" method="post">
+<div class="mb-3">
+    <label for="movie_title" class="form-label">Movie Title:</label><br>
+    <!--<input type="text" name="movie_title" id="movie_title"><br>-->
+    <input list="movies" id='movie_title' class="form-control" name="movie_title">
+    <datalist id="movies">
+        {% for title in titles %}
+        <option value="{{title}}">
+        {% endfor %}
+    </datalist><br>
+    <input type="submit" class="btn btn-primary" value="Submit">
+</div>
+</form>
+<div class="card">
+  <div class="card-body">
+    <b>"{{title}}" is a great choice. Here are some more like this:</b>
+  </div>
+</div><br><br>
+{% if movies_title %}
+<ul class="list-group">
+{% for movie in movies_title %}
+  <li class="list-group-item">{{movie}}</li>
+{% endfor %}
+</ul>
+{% endif %}
+<br><br>
+</div>
+{% endblock content %}
